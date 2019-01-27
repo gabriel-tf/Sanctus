@@ -13,24 +13,42 @@ const routes: Routes = [
     component: TabsPage,
     children: [
       {
-        path: 'home',
+        path: 'saint',
         children: [
           {
             path: '',
-            loadChildren: '../home/home.module#HomePageModule'
+            loadChildren: '../saint/saint.module#SaintPageModule'
+          }
+        ]
+      },
+      {
+        path: 'pray-place',
+        children: [
+          {
+            path: '',
+            loadChildren: '../pray-place/pray-place.module#PrayPlacePageModule'
+          }
+        ]
+      },
+      {
+        path: 'poor',
+        children: [
+          {
+            path: '',
+            loadChildren: '../poor/poor.module#PoorPageModule'
           }
         ]
       },
       {
         path: '',
-        redirectTo: '/tabs/home',
+        redirectTo: '/tabs/saint',
         pathMatch: 'full'
       }
     ]
   },
   {
     path: '',
-    redirectTo: '/tabs/home',
+    redirectTo: '/tabs/saint',
     pathMatch: 'full'
   }
 ];
@@ -44,4 +62,4 @@ const routes: Routes = [
   ],
   declarations: [TabsPage]
 })
-export class TabsPageModule {}
+export class TabsPageModule { }
