@@ -17,7 +17,7 @@ const routes: Routes = [
         children: [
           {
             path: '',
-            loadChildren: '../saint/saint.module#SaintPageModule'
+            loadChildren: '../pages/saint/saint.module#SaintPageModule'
           }
         ]
       },
@@ -26,7 +26,7 @@ const routes: Routes = [
         children: [
           {
             path: '',
-            loadChildren: '../pray-place/pray-place.module#PrayPlacePageModule'
+            loadChildren: '../pages/pray-place/pray-place.module#PrayPlacePageModule'
           }
         ]
       },
@@ -35,7 +35,7 @@ const routes: Routes = [
         children: [
           {
             path: '',
-            loadChildren: '../poor/poor.module#PoorPageModule'
+            loadChildren: '../pages/poor/poor.module#PoorPageModule'
           }
         ]
       },

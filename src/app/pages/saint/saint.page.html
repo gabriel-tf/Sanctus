@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>
+      Santo do Dia - {{dayMonth}}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content>
+    </ion-refresher-content>
+  </ion-refresher>
+
+  <ion-list>
+    <ion-card *ngFor="let saint of saints | async; index as saintIndex">
+      <ion-card-header>
+        <img src={{saint.img}} />
+        <ion-card-title>
+          {{saint.name}}
+        </ion-card-title>
+        <ion-card-subtitle *ngFor="let line of saint.lines; index as lineIndex">
+          <span *ngIf="checkNextLine(lineIndex, saintIndex)">
+            <ion-icon name="quote" item-start></ion-icon> {{line.description}}
+          </span>
+        </ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <p>
+          {{saint.description}}
+        </p>
+      </ion-card-content>
+    </ion-card>
+  </ion-list>
+
+  <ion-spinner *ngIf="!loadComplete" color="secondary" style="width: 100%; vertical-align: middle; height: 20%; text-align: center;">
+  </ion-spinner>
+
+  <span *ngIf="loadComplete">
+    <ion-card *ngIf="(saints | async)?.length==0 || (saints | async) == null">
+      <ion-card-content>
+        <ion-card-title>Ops...</ion-card-title>
+        Nenhuma informação encontrada.
+      </ion-card-content>
+    </ion-card>
+  </span>
+
+</ion-content>
