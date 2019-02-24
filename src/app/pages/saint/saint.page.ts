@@ -18,7 +18,8 @@ export class SaintPage {
   constructor(private service: SaintService) {
     
     var dateObj = new Date();
-    var month = ('0' + dateObj.getMonth() + 1).slice(-2); //months from 01-12
+    var m = dateObj.getMonth() + 1;
+    var month = ('0' + m).slice(-2); //months from 01-12
     var day = ('0' + dateObj.getDate()).slice(-2);
     this.dayMonth = day + "/" + month;
 

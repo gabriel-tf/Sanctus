@@ -13,6 +13,18 @@
     </ion-refresher-content>
   </ion-refresher>
 
+  <ion-spinner *ngIf="!loadComplete" color="secondary" style="width: 100%; vertical-align: middle; height: 20%; text-align: center;">
+  </ion-spinner>
+
+  <span *ngIf="loadComplete">
+    <ion-card *ngIf="(saints | async)?.length==0 || (saints | async) == null">
+      <ion-card-content>
+        <ion-card-title>Ops...</ion-card-title>
+        Nenhuma informação encontrada.
+      </ion-card-content>
+    </ion-card>
+  </span>
+
   <ion-list>
     <ion-card *ngFor="let saint of saints | async; index as saintIndex">
       <ion-card-header>
@@ -33,17 +45,5 @@
       </ion-card-content>
     </ion-card>
   </ion-list>
-
-  <ion-spinner *ngIf="!loadComplete" color="secondary" style="width: 100%; vertical-align: middle; height: 20%; text-align: center;">
-  </ion-spinner>
-
-  <span *ngIf="loadComplete">
-    <ion-card *ngIf="(saints | async)?.length==0 || (saints | async) == null">
-      <ion-card-content>
-        <ion-card-title>Ops...</ion-card-title>
-        Nenhuma informação encontrada.
-      </ion-card-content>
-    </ion-card>
-  </span>
 
 </ion-content>
