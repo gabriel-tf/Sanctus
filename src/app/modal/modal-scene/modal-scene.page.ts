@@ -22,7 +22,7 @@ export class ModalScenePage {
     this.scenegraph.stopAnimation();
   }
 
-  toggleVR(){
-    this.scenegraph.toggleVR();
-  }
+  // toggleVR(){
+  //   this.scenegraph.toggleVR();
+  // }
 }
