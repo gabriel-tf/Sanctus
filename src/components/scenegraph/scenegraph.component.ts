@@ -46,7 +46,7 @@ export class ScenegraphComponent {
 
     this.cube = this.createCube(0.25, new THREE.Color('rgb(255,96,70)'));
     this.cube.position.set(0, this.controls.userHeight, -0.8);
-    this.scene.add(this.cube);
+    //this.scene.add(this.cube);
 
     // this.controls = new OrbitControls(this.camera);
 
@@ -91,11 +91,37 @@ export class ScenegraphComponent {
   }
 
   startAnimation() {
-    let loader: THREE.TextureLoader = new THREE.TextureLoader();
-    loader.load('assets/videos/box.png', (texture) => {
-      let skybox = this.createSky(5, texture);
-      this.scene.add(skybox);
-    });
+    // let loader: THREE.TextureLoader = new THREE.TextureLoader();
+    // loader.load('assets/videos/box.png', (texture) => {
+    //   let skybox = this.createSky(5, texture);
+    //   this.scene.add(skybox);
+    // });
+
+    var video = document.createElement('video');
+    video.width = window.innerWidth;
+    video.height = window.innerHeight;
+    video.loop = true;
+    video.muted = true;
+    video.src = '/assets/videos/video.mp4';
+    video.setAttribute('webkit-playsinline', 'webkit-playsinline');
+    video.play();
+
+    let geometry;
+    switch (this.geometry) {
+      default:
+      case 'video':
+        geometry = new THREE.SphereBufferGeometry(500, 60, 40);
+        geometry.scale(-1, 1, 1);
+    }
+
+    var texture = new THREE.VideoTexture(video);
+    texture.minFilter = THREE.LinearFilter;
+    texture.format = THREE.RGBFormat;
+
+    var material = new THREE.MeshBasicMaterial({ map: texture });
+    var mesh = new THREE.Mesh(geometry, material);
+    mesh.rotation.y = -Math.PI / 2;
+    this.scene.add(mesh);
 
     let vrButtonOptions = {
       color: 'white',
