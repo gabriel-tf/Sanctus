@@ -14,10 +14,10 @@ export class PrayPlacePage implements OnInit {
   ngOnInit() {
   }
 
-  async launch360Video() {
+  async launch360Video(videoName) {
     const modal = await this.modalController.create({
       component: ModalScenePage,
-      componentProps: { value: 123 }
+      componentProps: { videoName: videoName }
     });
     return await modal.present();
   }

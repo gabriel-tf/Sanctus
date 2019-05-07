@@ -24,7 +24,8 @@ export class SaintPage {
     this.dayMonth = day + "/" + month;
 
     //this.service.getByDayMonth("27/01").subscribe(val => console.log(val.length));
-    this.saints = this.service.getByDayMonth(this.dayMonth);
+    //this.saints = this.service.getByDayMonth(this.dayMonth);
+    this.saints = this.service.getByDayMonth("04/10");
   }
 
   ngOnInit() {

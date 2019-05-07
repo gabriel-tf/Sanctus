@@ -11,11 +11,12 @@ export class ModalScenePage {
     
   @ViewChild('scenegraph')
   scenegraph: ScenegraphComponent;
+  videoName;
 
   constructor() { }
 
   ionViewDidEnter() {
-    this.scenegraph.startAnimation();
+    this.scenegraph.startAnimation(this.videoName);
   }
 
   ionViewDidLeave() {
