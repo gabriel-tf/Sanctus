@@ -1,6 +1,3 @@
 # Sanctus
 
-## Projeto de realidade virutal
-
-### Ionic 4 e ThreeJS
-
+## Projeto de realidade virutal (Ionic 4 e ThreeJS)
